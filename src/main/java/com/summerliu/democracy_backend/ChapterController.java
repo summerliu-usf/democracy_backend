@@ -4,19 +4,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/chapters") // Base path for chapter-related endpoints
+@RequestMapping("/{bookId}/chapters")
 public class ChapterController {
 
     @Autowired
     private ChapterService chapterService;
 
-    // Get a specific chapter by ID
-    @GetMapping("/Chapter{id}")
-    public Optional<Chapter> getChapterById(@PathVariable int id) {
-        return chapterService.getChapterById(id);
+    @GetMapping
+    public List<Chapter> getChaptersForBook(@PathVariable String bookId) {
+        return chapterService.getChaptersForBook(bookId);
+    }
+
+    @GetMapping("/chapter_{chapterNumber}")
+    public Chapter getChapterById(@PathVariable String bookId, @PathVariable int chapterNumber) {
+        return chapterService.getChapterById(bookId, chapterNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Chapter not found"));
+    }
+
+    @RequestMapping("/chat")
+    public class ChatController {
+
+        @Autowired
+        private ChatService chatService;
+
+        @GetMapping("/{chapterId}")
+        public List<Message> getChatMessages(@PathVariable String chapterId) {
+            return chatService.getMessagesForChapter(chapterId);
+        }
+
+        @PostMapping("/{chapterId}/send")
+        public Message sendMessage(@PathVariable String chapterId, @RequestBody ChatMessage message) {
+            return chatService.sendMessageToChat(chapterId, message);
+        }
     }
 
 }

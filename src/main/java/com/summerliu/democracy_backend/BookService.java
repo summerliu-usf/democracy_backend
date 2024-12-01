@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import com.summerliu.democracy_backend.Chapter;
 import com.summerliu.democracy_backend.ChapterService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +44,5 @@ public class BookService {
     public Book saveBook(Book book) {
         return bookRepository.save(book);
     }
-
 
 }

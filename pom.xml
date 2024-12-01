@@ -62,12 +62,6 @@
             <version>2.15.0</version>
         </dependency>
 
-        <!-- Langchain4j OpenAI Integration -->
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4jopenai</artifactId>
-            <version>0.32.0</version>
-        </dependency>
 
         <!-- Spring Shell -->
         <dependency>
@@ -87,6 +81,16 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
+                <version>0.36.2</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-spring-boot-starter</artifactId>
+                <version>0.36.2</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

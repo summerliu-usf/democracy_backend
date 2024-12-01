@@ -87,4 +87,16 @@ public class Book {
         }
         return res;
     }
+
+    public ArrayList<Chapter> getChapters() {
+        return this.chapterList;
+    }
+
+    public ArrayList<String> getChapterTitles() {
+        ArrayList<String> lst = new ArrayList<>();
+        for (Chapter chapter: chapterList) {
+            lst.add(chapter.getTitle());
+        }
+        return lst;
+    }
 }
