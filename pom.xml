@@ -76,6 +76,7 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-open-ai</artifactId>
@@ -86,16 +87,8 @@
             <artifactId>langchain4j</artifactId>
             <version>0.36.2</version>
         </dependency>
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
-            <version>0.36.2</version>
-        </dependency>
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-spring-boot-starter</artifactId>
-            <version>0.36.2</version>
-        </dependency>
+
+
 
     </dependencies>
 
@@ -121,30 +114,25 @@
     </dependencyManagement>
 
     <build>
-        <plugins>
-            <!-- Spring Boot Maven Plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.10.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.cloud.tools</groupId>
+                    <artifactId>appengine-maven-plugin</artifactId>
+                    <version>2.4.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 
-            <!-- Google Cloud App Engine Maven Plugin -->
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>appengine-maven-plugin</artifactId>
-                <version>2.4.4</version>
-                <configuration>
-                    <version>1</version>
-                    <projectId>democracybackend</projectId>
-                </configuration>
-            </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-wrapper-plugin</artifactId>
-                <version>3.1.1</version>
-            </plugin>
-
-        </plugins>
     </build>
 </project>
