@@ -45,4 +45,8 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    public ArrayList<Chapter> getChapterList(String bookId) {
+        Book book = getBookById(bookId);
+        return book.getChapterList();
+    }
 }

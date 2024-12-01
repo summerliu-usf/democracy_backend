@@ -24,8 +24,8 @@ public class BookController {
 
     // Get chapters of a specific book
     @GetMapping("/{bookId}/chapters")
-    public List<Chapter> getChaptersForBook(@PathVariable String bookId) {
-        return bookService.getChaptersById(bookId);
+    public List<Chapter> getChaptersList(@PathVariable String bookId) {
+        return bookService.getChapterList(bookId);
     }
 
     // Get a specific chapter of a book

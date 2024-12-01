@@ -62,12 +62,8 @@ public class Book {
         this.coverImageUrl = coverImageUrl;
     }
 
-    public ArrayList<String> getChapterList() {
-        ArrayList<String> lst = new ArrayList();
-        for (Chapter chapter : chapterList) {
-            lst.add(chapter.getTitle());
-        }
-        return lst;
+    public ArrayList<Chapter> getChapterList(){
+        return this.chapterList;
     }
 
     public ArrayList<Chapter> addAllChapters(String lstOfChapters) {

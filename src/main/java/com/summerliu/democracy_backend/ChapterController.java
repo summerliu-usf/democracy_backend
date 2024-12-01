@@ -12,33 +12,31 @@ public class ChapterController {
 
     @Autowired
     private ChapterService chapterService;
+    private ChatService chatService;
 
     @GetMapping
     public List<Chapter> getChaptersForBook(@PathVariable String bookId) {
         return chapterService.getChaptersForBook(bookId);
     }
 
-    @GetMapping("/chapter_{chapterNumber}")
-    public Chapter getChapterById(@PathVariable String bookId, @PathVariable int chapterNumber) {
-        return chapterService.getChapterById(bookId, chapterNumber)
+    @GetMapping("/chapter_{chapterId}")
+    public Chapter getChapterById(@PathVariable String bookId, @PathVariable int chapterId) {
+        return chapterService.getChapterById(bookId, chapterId)
                 .orElseThrow(() -> new IllegalArgumentException("Chapter not found"));
     }
 
-    @RequestMapping("/chat")
-    public class ChatController {
-
-        @Autowired
-        private ChatService chatService;
-
-        @GetMapping("/{chapterId}")
-        public List<Message> getChatMessages(@PathVariable String chapterId) {
-            return chatService.getMessagesForChapter(chapterId);
-        }
-
-        @PostMapping("/{chapterId}/send")
-        public Message sendMessage(@PathVariable String chapterId, @RequestBody ChatMessage message) {
-            return chatService.sendMessageToChat(chapterId, message);
-        }
+    @PostMapping("/chapter_{chapterId}/chat/send")
+    public String chatAboutChapter(@PathVariable int chapterId, @RequestParam String message) {
+        String context = "You are discussing chapter" + chapterId;
+        return chatService.sendMessage(context, message);
     }
 
+    @GetMapping("/{chapterId}/chat/sampleQuestions")
+    public List<String> generateSampleQuestionsForChapter(
+            @PathVariable int chapterId,
+            @RequestParam int count,
+            @RequestParam int maxWords) {
+        String context = "Generate questions about chapter" + chapterId;
+        return chatService.generateSampleQuestions(context, count, maxWords);
+    }
 }

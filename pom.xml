@@ -13,7 +13,6 @@
     <groupId>com.summerliu</groupId>
     <artifactId>democracy_backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
     <description>Democracy project CS514 final</description>
 
     <properties>
@@ -77,20 +76,32 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai</artifactId>
+            <version>0.36.2</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j</artifactId>
+            <version>0.36.2</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
+            <version>0.36.2</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-spring-boot-starter</artifactId>
+            <version>0.36.2</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>dev.langchain4j</groupId>
-                <artifactId>langchain4j-open-ai-spring-boot-starter</artifactId>
-                <version>0.36.2</version>
-            </dependency>
-            <dependency>
-                <groupId>dev.langchain4j</groupId>
-                <artifactId>langchain4j-spring-boot-starter</artifactId>
-                <version>0.36.2</version>
-            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -105,6 +116,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -123,15 +135,15 @@
                 <version>2.4.4</version>
                 <configuration>
                     <version>1</version>
-                    <projectId>clear-veld-442122-e4</projectId>
+                    <projectId>democracybackend</projectId>
                 </configuration>
             </plugin>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-wrapper-plugin</artifactId>
-                        <version>3.1.1</version>
-                    </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-wrapper-plugin</artifactId>
+                <version>3.1.1</version>
+            </plugin>
 
         </plugins>
     </build>
